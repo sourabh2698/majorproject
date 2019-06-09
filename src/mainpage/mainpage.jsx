@@ -1,5 +1,4 @@
 import React from 'react'
-//top
 import { Jumbotron, Row } from 'react-bootstrap'
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
@@ -7,7 +6,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
 import { Grid, Button } from '@material-ui/core';
 import CloudUploadIcon from '@material-ui/icons/CloudUpload';
-
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 
 const useStyles = makeStyles(theme => ({
@@ -57,7 +56,7 @@ class MainPage extends React.Component {
     //     };
     render() {
         return (
-            <div>
+            <div><Link to="/">
                 <Jumbotron>
                     <h1 align="center">Buy | Sell | Find Anything you need</h1><br /><br />
                     <div style={{ paddingLeft: 500 }}>
@@ -98,7 +97,7 @@ class MainPage extends React.Component {
                                     variant="outlined"
                                 />
                             </Grid>
-                            <Grid item  style={{ paddingTop: 35 }}>
+                            <Grid item style={{ paddingTop: 35 }}>
                                 <Button variant="contained" color="secondary" size="large" >
                                     Search
                                 </Button>
@@ -112,10 +111,9 @@ class MainPage extends React.Component {
                         </Grid></div><br /><br />
                     <h6 align="center">Some Random tagline </h6>
                 </Jumbotron>
-
-            
-            
-            </div>
+                </Link>
+                </div> 
+           
         )
     }
 }

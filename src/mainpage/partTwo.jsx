@@ -21,7 +21,7 @@ function ImgMediaCard() {
     const classes = useStyles();
 
     return (
-        <div>
+        <div><br/><br/>
         <h5 align="center">Recent ads</h5><br/>
         <Container>
         <Paper>
@@ -188,7 +188,7 @@ function ImgMediaCard() {
         
         </div></Paper>
         </Container>
-        </div>
+        <br/><br/></div>
     );
 }
 

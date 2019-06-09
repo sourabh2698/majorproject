@@ -9,10 +9,10 @@ import { makeStyles } from '@material-ui/core/styles';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import Button from '@material-ui/core/Button';
-import { BrowserRouter as Route, Link } from "react-router-dom";
-import Login from '../form/login';
-import { Router as Router } from 'react-router';
-
+import { BrowserRouter as Router, Route, Link} from "react-router-dom";
+// import Login from './form/login.jsx';
+// import { Router as Router } from 'react-router';
+// import NavLink from 'react-bootstrap/NavLink';
 
 
 const useStyles = makeStyles(theme => ({
@@ -73,6 +73,10 @@ const useStyles = makeStyles(theme => ({
 function SearchAppBar() {
   const classes = useStyles();
   
+function handleShow() {
+    this.setState({ show: true });
+}
+
 
 
 
@@ -89,7 +93,7 @@ function SearchAppBar() {
             <MenuIcon />
           </IconButton>
           <Typography className={classes.title} variant="h5" noWrap>
-            College Adda
+          <Link to="/">  College Adda</Link>
           </Typography>
           <div className={classes.search}>
             <div className={classes.searchIcon}>
@@ -107,8 +111,8 @@ function SearchAppBar() {
         
             <Button color="inherit">How to use</Button>
             <Button color="inherit">My account</Button>
-            <Button color="inherit">Sign-UP</Button>
-            <Link to ="/login/">Login</Link>
+            <Button color="inherit"><Link to ="/signup/">Sign-UP</Link></Button>
+            <Button ><Link to ="/login/">Login</Link></Button>
             
         
 
