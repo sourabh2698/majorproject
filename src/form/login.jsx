@@ -1,7 +1,9 @@
 import React from 'react';
-import { Form, Button, Row, Col, Modal } from 'react-bootstrap';
+import { Form, Button, Row, Col, Modal, Tabs, Tab } from 'react-bootstrap';
 import { Container } from '@material-ui/core';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+
+
 
 class Login extends React.Component {
     constructor(props, context) {
@@ -9,6 +11,7 @@ class Login extends React.Component {
 
         this.handleShow = this.handleShow.bind(this);
         this.handleClose = this.handleClose.bind(this);
+
 
         this.state = {
             show: false,
@@ -26,16 +29,8 @@ class Login extends React.Component {
     render() {
         return (
             <div>
-                <Button variant="primary" onClick={this.handleShow}>
-                    Login
-          </Button>
-
-                <Modal show={this.state.show} onHide={this.handleClose}>
-                    <Modal.Header closeButton>
-                        <Modal.Title>Login</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body><Container><Row>
-
+                <Container>
+                    <Row>
                         <Col>
                             <Form>
                                 <Form.Group controlId="formBasicEmail">
@@ -51,23 +46,21 @@ class Login extends React.Component {
                                     <Form.Control type="password" placeholder="Password" />
                                 </Form.Group>
                                 <Form.Group controlId="formBasicChecbox">
-                                    <Form.Check type="checkbox" label="Check me out" />
+                                    <Form.Check type="checkbox" label="Remember me" />
                                 </Form.Group>
+                                <Button variant="primary" onClick={this.handleClose}>
+                            Login
+                            </Button>
+                                <Button variant="secondary" onClick={this.handleClose} style={{marginLeft:10}}>
+                            Close
+                            </Button>
+                            
                             </Form>
                         </Col>
 
 
                     </Row>
-                    </Container></Modal.Body>
-                    <Modal.Footer>
-                        <Button variant="secondary" onClick={this.handleClose}>
-                            Close
-              </Button>
-                        <Button variant="primary" onClick={this.handleClose}>
-                            Login
-              </Button>
-                    </Modal.Footer>
-                </Modal>
+                </Container>
 
 
 
