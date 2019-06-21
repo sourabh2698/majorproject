@@ -56,7 +56,7 @@ export class Footer extends Component {
 
                                 <Typography variant="body 2" component="h6" align="center">
                                     College Adda! is a free inter community classifieds website where you can post free
-                                         advertisements related books, study<br /> tools like - Drafters, Geometry, etc and can get examination papers too!
+                                         advertisements related books, study<br /> tools like - Drafters, Geometry, etc. and can get examination papers too!
                                          You can post free ads to buy, sell, rent or for charity.<br />
                                     Find used books, rent or buy books, find the projects or class notes inside your college premises.
                                         </Typography><br /><br />
