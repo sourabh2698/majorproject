@@ -167,7 +167,7 @@ function SearchAppBar() {
             <Button color="inherit"><Link to="/myprofile/">My Profile</Link></Button>
             <Button color="inherit" ><Link to="/allad/">All ads</Link></Button>
             <Button><ControlledTabs></ControlledTabs></Button>
-            <Button><Test></Test></Button>
+            {/* <Button><Test></Test></Button> */}
 
 
           </Toolbar>

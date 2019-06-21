@@ -65,7 +65,7 @@ class ControlledTabs extends React.Component {
             </Container>
           </Modal.Body>
           <Modal.Footer>
-          <Link>Dont have an account ?</Link>
+          all field are mandatory
                     </Modal.Footer>
 
         </Modal>

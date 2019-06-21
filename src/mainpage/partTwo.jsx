@@ -26,23 +26,21 @@ class AdCard extends React.Component {
 
             <div><br /><br />
                 <h5 align="center">Recent ads</h5><br />
-                <Container>
-                    <Paper>
+                
+                    <Paper style={{display:'flex'}}>
                         {this.props.db.ad.map(p =>
-                            <div style={{ paddingLeft: 200 }}>
+                            <div style={{ paddingLeft: 200}}>
 
 
 
-                                <Carousel>
-                                    <CarouselItem>
-                                        <CardDeck>
-                                            <Card style={{ width: 300, marginTop:20 , marginLeft:20 }}>
+                                
+                                            <Card style={{ width: 300, marginTop:20 , marginLeft:20}}>
                                                 <CardActionArea>
                                                     <CardMedia
                                                         component="img"
                                                         alt="Contemplative Reptile"
                                                         height="300"
-                                                        image="https://i.ytimg.com/vi/yoNjMyOAnUo/maxresdefault.jpg"
+                                                        image=".././assets/book.png"
                                                         title="Contemplative Reptile"
                                                     />
                                                     <CardContent>
@@ -63,14 +61,12 @@ class AdCard extends React.Component {
                                                  </Button>
                                                 </CardActions>
                                             </Card>
-                                        </CardDeck>
-                                    </CarouselItem>
-                                </Carousel>
+                                       
 
                             </div>
                         )}
                     </Paper>
-                </Container>
+                
                 <br /> <br /></div>
         );
     }

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 // import { makeStyles } from '@material-ui/core/styles';
 import { Grid, Paper, Typography, TextField, InputAdornment, Button } from '@material-ui/core'
 import CloudUploadIcon from '@material-ui/icons/CloudUpload';
-// import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 
 
@@ -80,7 +80,7 @@ export class PartOne extends Component {
                                         </Grid>
                                         <Grid item style={{marginBottom:15}}>
                                             <Button variant="contained" color="default" size="large">
-                                                Post-Ad
+                                               <Link to="postad"> Post-Ad</Link>
                              <CloudUploadIcon />
                                             </Button>
                                         </Grid>

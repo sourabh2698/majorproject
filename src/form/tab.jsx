@@ -65,7 +65,7 @@ class Test extends React.Component {
             </Container>
           </Modal.Body>
           <Modal.Footer>
-          <Link to ='/signup'>Dont have an account ?</Link>
+          all mark fields are mandatory.
                     </Modal.Footer>
 
         </Modal>
