@@ -1,0 +1,12 @@
+core.repositoryformatversion=0
+core.filemode=false
+core.bare=false
+core.logallrefupdates=true
+core.symlinks=false
+core.ignorecase=true
+remote.origin.url=https://github.com/sourabh2698/majorproject.git
+remote.origin.fetch=+refs/heads/*:refs/remotes/origin/*
+branch.create_user.remote=.
+branch.create_user.merge=refs/heads/master
+branch.master.remote=origin
+branch.master.merge=refs/heads/master
