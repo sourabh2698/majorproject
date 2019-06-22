@@ -16,6 +16,9 @@ import ControlledTabs from '../form/formtab'
 import { ClickAwayListener, Paper } from '@material-ui/core'
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
+import * as firebase from 'firebase/app';
+import "firebase/auth";
+import GoogleLogin from './firebaselogin'
 
 
 
@@ -74,6 +77,8 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
+
+
 function SearchAppBar() {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -105,11 +110,39 @@ function SearchAppBar() {
   }
 
 
+  function googleLogin() {
+    var provider = new firebase.auth.GoogleAuthProvider();
+
+
+    firebase.auth().signInWithPopup(provider).then((result) => {
+      // This gives you a Google Access Token. You can use it to access the Google API.
+      var token = result.credential.accessToken;
+      // The signed-in user info.
+      var user = result.user;
+      this.setState({
+        user: user
+      })
+      console.log(user.displayName, user.email);
+      // ...
+    }).catch(function (error) {
+      // Handle Errors here.
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      // The email of the user's account used.
+      var email = error.email;
+      // The firebase.auth.AuthCredential type that was used.
+      var credential = error.credential;
+      // ...
+    });
+  }
+
+  
 
 
 
   return (
     <div className={classes.root}>
+
       <ElevationScroll>
         <AppBar position="static">
           <Toolbar>
@@ -161,12 +194,13 @@ function SearchAppBar() {
               <MenuItem>ab</MenuItem>
               <MenuItem>ab</MenuItem>
               <MenuItem>ab</MenuItem>
-             </Menu>
-             abc
+            </Menu>
+              abc
              </Button>
             <Button color="inherit"><Link to="/myprofile/">My Profile</Link></Button>
             <Button color="inherit" ><Link to="/allad/">All ads</Link></Button>
-            <Button><ControlledTabs></ControlledTabs></Button>
+            <div>
+                <GoogleLogin/></div>
             {/* <Button><Test></Test></Button> */}
 
 

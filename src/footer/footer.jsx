@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 import { Grid, Paper, Typography, TextField, InputAdornment, Button, Avatar } from '@material-ui/core'
 // import CloudUploadIcon from '@material-ui/icons/CloudUpload';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router,Route,Link } from "react-router-dom";
 
 
 
@@ -22,7 +22,7 @@ export class Footer extends Component {
                         <Grid item sm>
                             <Paper style={{ padding: 30, marginLeft: 2, marginRight: 2, backgroundColor: '#b8b8b8' }}>
                                 <Typography variant="body 2" component="h3" align="center" >
-                                    About us  |  Contact us  |   Home
+                                    About us  |<Link to="/contactus/" > Contact us </Link> |   Home
                                         <hr
                                         style={{
                                             color: '#000000',
