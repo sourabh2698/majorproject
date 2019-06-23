@@ -9,34 +9,31 @@ class PostAd extends React.Component {
         super(props);
 
         this.state = { validated: false };
+        
     }
 
-    getTitleChange=(e)=> {
+    getTitleChange = (e) => {
         this.setState(
             { title: e.target.value }
         )
     }
 
-    getDescriptionChange=(e)=> {
+    getDescriptionChange = (e) => {
         this.setState({ description: e.target.value })
     }
 
-    setValue=()=> {
+    setValue = () => {
         let title = this.state.title
         let description = this.state.description
         console.log(title);
         console.log(description);
-        let obj={title:this.state.title,description:this.state.description}
+        let obj = { title: this.state.title, description: this.state.description }
 
         axios.post("http://localhost:8080/postad", obj)
-        .then((res) => {
-          console.log(res.data);
-        //   this.getData();
-        })
-
-
-
-
+            .then((res) => {
+                console.log(res.data);
+                //   this.getData();
+            })
     }
 
     handleSubmit(event) {
@@ -46,7 +43,9 @@ class PostAd extends React.Component {
             event.stopPropagation();
         }
         this.setState({ validated: true });
+
     }
+   
 
     render() {
         const { validated } = this.state;
@@ -88,7 +87,8 @@ class PostAd extends React.Component {
                             feedback="You must agree before submitting."
                         />
                     </Form.Group>
-                    <Button type="submit" onClick={this.setValue}>Submit form</Button>
+
+                    <Button type="submit" onClick={this.setValue} >Submit form</Button>
                 </Form>
             </Paper>
         );

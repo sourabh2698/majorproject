@@ -82,7 +82,7 @@ class Login extends React.Component {
   render() {
     return (
       <div>
-        <Paper style={{padding:20,backgroundColor:"#e9eae2"}}>
+        
           <Container>
             <Row>
               <Col>
@@ -116,22 +116,24 @@ class Login extends React.Component {
 
 
             </Row>
-            <hr /> <p style={{ marginLeft: "50%" }}>Or</p><hr />
+            <br /> <p style={{ marginLeft: "50%" }}>Or</p>
             {this.state.user ?
               <div>
-                <p>{this.state.user.displayName}</p>
+                {/* <p>{this.state.user.displayName}</p>
                 <p>{this.state.user.email}</p>
                 <img src={this.state.user.photoURL}></img>
-                <button onClick={() => { this.logOut() }}>Logout</button>
+                <button onClick={() => { this.logOut() }}>Logout</button> */}
               </div> :
 
-              <span onClick={() => { this.googleLogin() }} style={{ cursor: "pointer", alignContent: "center", marginLeft: "10%" }}><img src=".././assets/sign.png" style={{ width: "80%", height: "30%" }}></img></span>}
+              <span onClick={() => { this.googleLogin() }} 
+              style={{ cursor: "pointer", alignContent: "center", marginLeft: "10%" }}>
+                <img src=".././assets/sign.png" style={{ width: "80%", height: "30%" }}></img></span>}
 
 
           </Container>
 
 
-        </Paper>
+        
       </div>
     );
   }

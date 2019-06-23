@@ -3,6 +3,7 @@ import {Button} from '@material-ui/core'
 import ControlledTabs from '../form/formtab'
 import * as firebase from 'firebase/app';
 import "firebase/auth";
+import LoginDialog from '../form/logintab';
 
 export class GoogleLogin extends Component {
     constructor(props){
@@ -71,7 +72,7 @@ export class GoogleLogin extends Component {
                   <Button onClick={() => { this.logOut() }}>Logout</Button>
                 </div> : 
               
-              <Button><ControlledTabs></ControlledTabs></Button>}
+              <Button><LoginDialog/></Button>}
                 </div>
                 
         )
