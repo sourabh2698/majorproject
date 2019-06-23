@@ -13,7 +13,8 @@ import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import { Typography, List, ListSubheader,TextField } from '@material-ui/core';
-import ComplexGrid from '../Ads/ads'
+import ComplexGrid from '../Ads/ads.jsx';
+import Adss from './adss';
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -45,7 +46,7 @@ const useStyles = makeStyles(theme => ({
 
 
 
-function AllAds() {
+function AllAds(props) {
     const classes = useStyles();
     const [state, setState] = React.useState({
         Likenew: true,
@@ -63,8 +64,8 @@ function AllAds() {
 
     return (
         <div className={classes.root}>
-            <Grid container spacing={3}>
-                <Grid item xs={12} sm={2}>
+            {/* <Grid container spacing={3}>
+                <Grid item xs={12} sm={2}> */}
                     <Paper className={classes.paper}>
 
                         <div className={classes.root} style={{ border: 'solid', borderRadius: 10, borderWidth: 0.5, marginBottom: 5 }}>
@@ -153,15 +154,16 @@ function AllAds() {
                             </List>
                         </div>
                     </Paper>
-                </Grid>
+                {/* </Grid> */}
 
 
-                <Grid item xs={12} sm={10}>
+                {/* <Grid item xs={12} sm={10}>
                     <Paper className={classes.paper}>
                         <ComplexGrid/>
+                        <Adss/>
                     </Paper>
-                </Grid>
-            </Grid>
+                </Grid> */}
+            {/* </Grid> */}
         </div>
     );
 }

@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import SearchAppBar from './Navbar/Navigation.js'
 import Login from './form/login.jsx'
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link,withRouter } from "react-router-dom";
 import Footer from './footer/footer'
 import HomePage from './mainpage/use'
 import Test from './form/tab';
@@ -16,6 +16,7 @@ import * as firebase from 'firebase/app'
 import "firebase/auth";
 import ContactUs from './footer/contactus';
 import PartOne from './mainpage/part1';
+import ComplexGrid from './Ads/ads';
 
 
 var firebaseConfig = {
@@ -55,34 +56,52 @@ class App extends React.Component {
         // },
       ],
       ads:[
-        {
-          ProductName:"Book1",
-          ProductDescription:"Description 1",
-          productcondition:"Good",
-          OldPrice:"200.00",
-          NewPrice:"150.00",
-        },
-        {
-          ProductName:"Book1",
-          ProductDescription:"Description 1",
-          productcondition:"Good",
-          OldPrice:"200.00",
-          NewPrice:"150.00",
-        },
-        {
-          ProductName:"Book1",
-          ProductDescription:"Description 1",
-          productcondition:"Good",
-          OldPrice:"200.00",
-          NewPrice:"150.00",
-        },
+        // {
+        //   title:"Book1",
+        //   description:"Description 1",
+        //   category:"Books",
+        //   oldprice:"200.00",
+        //   newprice:"150.00",
+        // },
+        // {
+        //   title:"Book2",
+        //   description:"Description 2",
+        //   category:"electronics",
+        //   oldprice:"150.00",
+        //   newprice:"100.00",
+        // },
+        // {
+        //   title:"Book 3",
+        //   description:"Description 1",
+        //   category:"stationary",
+        //   oldprice:"200.00",
+        //   newprice:"150.00",
+        // },
 
       ]
     }
 
   }
 
-  componentDidMount = () => {
+  // componentDidMount = () => {
+  //   axios.get('http://localhost:8080/postads')
+  //     .then((res) => {
+  //       console.log(res)
+
+  //       let db = this.state.db;
+  //       db.ad = res.data;
+  //       console.log(res.data)
+  //       this.setState({
+  //         db: db
+
+  //       })
+  //     })
+  // }
+  
+  componentDidMount() {
+    this.getData()
+  }
+  getData() {
     axios.get('http://localhost:8080/postads')
       .then((res) => {
         console.log(res)
@@ -92,11 +111,9 @@ class App extends React.Component {
         console.log(res.data)
         this.setState({
           db: db
-
         })
       })
   }
-
 
 
 
@@ -119,7 +136,8 @@ class App extends React.Component {
           <Route path="/login/" exact component={Login} />
           {/* <Route path="/signup/" component={Test} /> */}
           {/* <Route path="/allad/" component={AllAds}></Route> */}
-          <Route path="/allad/" render={() => <AllAds db={this.props.db} />}></Route>
+          {/* <Route path="/allad/" render={() => <AllAds db={this.state.db} />}></Route> */}
+          <Route path="/allad/" render={() => <ComplexGrid db={this.state.db} />}></Route>
           <Route path="/postad/" component={PostAd}></Route>
           <Route path="/contactus/" component={ContactUs} />
           <Footer />
