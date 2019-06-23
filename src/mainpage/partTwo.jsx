@@ -48,7 +48,7 @@ class AdCard extends React.Component {
                                                             {p.title}
                                                         </Typography>
                                                         <Typography variant="body2" color="textSecondary" component="p">
-                                                            {p.des}
+                                                            {p.description}
                                                         </Typography>
                                                     </CardContent>
                                                 </CardActionArea>

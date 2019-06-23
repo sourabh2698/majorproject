@@ -37,10 +37,10 @@ class App extends React.Component {
     this.state = {};
     // this.loginCheck()
 
-    this.db = {
+    this.state.db = {
       ad: [{
         title: "title1",
-        des: "descrpiton 1",
+        descrpiton: "descrpiton 1",
       },
         // {
         //   title:"title2",
@@ -86,7 +86,7 @@ class App extends React.Component {
 
           <Route path="/" exact component={HomePage} />
           <Route path="/myprofile/" component={MyProfile} />
-          <Route path="/" exact render={() => <AdCard db={this.db} />} />
+          <Route path="/" exact render={() => <AdCard db={this.state.db} />} />
           {/* <NavBar/> */}
 
           <Route path="/login/" exact component={Login} />
