@@ -67,7 +67,7 @@ export class GoogleLogin extends Component {
                 <div>
                   {/* <p>{this.state.user.displayName}</p>
                   <p>{this.state.user.email}</p> */}
-                  {/* <img src={this.state.user.photoURL} style={{height:"10%",width:"10%"}}></img> */}
+                  <img src={this.state.user.photoURL} style={{height:"10%",width:"10%"}}></img>
                   <Button onClick={() => { this.logOut() }}>Logout</Button>
                 </div> : 
               

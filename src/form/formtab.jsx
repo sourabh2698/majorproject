@@ -7,7 +7,7 @@ import SignUp from '../form/signup'
 
 
 
-class ControlledTabs extends React.Component {
+class LoginModal extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.handleShow = this.handleShow.bind(this);
@@ -30,37 +30,37 @@ class ControlledTabs extends React.Component {
   render() {
     return (
       <div>
-        <Button variant="primary" onClick={this.handleShow}>
+        <span variant="primary" onClick={this.handleShow}>
           Login
-          </Button>
+          </span>
         <Modal show={this.state.show} onHide={this.handleClose} >
           <Modal.Header closeButton>
             College Adda
           </Modal.Header>
           <Modal.Body>
-            <Container>
+            <Container >
 
 
-
+            <Row>
               <Tabs
                 id="controlled-tab-example"
                 activeKey={this.state.key}
                 onSelect={key => this.setState({ key })}
               >
 
-                <Tab eventKey="home" title="Login">
+                <Tab eventKey="home" title="Login" >
                   <Login/>
                 </Tab>
 
 
-                <Tab eventKey="profile" title="Sign-up">
+                <Tab eventKey="profile" title="Sign-up" >
                   <SignUp/>
                   
                 </Tab>
 
               </Tabs>
 
-
+              </Row>
 
             </Container>
           </Modal.Body>
@@ -76,4 +76,4 @@ class ControlledTabs extends React.Component {
   }
 }
 
-export default ControlledTabs;
+export default LoginModal;

@@ -14,6 +14,7 @@ export class Footer extends Component {
             <div >
 
                 <div><footer>
+                
                     <Grid container spacing={3}
                         direction="row"
                         alignItems="center"
