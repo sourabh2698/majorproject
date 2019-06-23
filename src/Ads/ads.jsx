@@ -46,23 +46,26 @@ function ComplexGrid(props) {
         <div className={classes.root}>
             <div>
                 <Paper className={classes.paper}>
+                {props.db.ads.map(p =>
                     <Grid container spacing={2}>
                         <Grid item>
                             <ButtonBase className={classes.image}>
-                                <img className={classes.img} alt="complex" src="https://about.canva.com/wp-content/uploads/sites/3/2015/01/art_bookcover.png" />
+                                <img className={classes.img} alt="complex" src=".././assets/bookcover.jpg" />
                             </ButtonBase>
                         </Grid>
+                        
                         <Grid item xs={12} sm container>
+                            
                             <Grid item xs container direction="column" spacing={2}>
                                 <Grid item xs>
                                     <Typography gutterBottom variant="subtitle1">
-                                        Book Name
+                                        {p.ProductName}
                 </Typography>
                                     <Typography variant="body2" gutterBottom>
-                                        Book description
+                                        {p.ProductDescription}
                 </Typography>
                                     <Typography variant="body2" color="textSecondary">
-                                        Product ID: 1030114
+                                        Product condition: {p.productcondition}
                 </Typography>
                                 </Grid>
                                 <Grid item>
@@ -72,10 +75,12 @@ function ComplexGrid(props) {
                                 </Grid>
                             </Grid>
                             <Grid item>
-                                <Typography variant="h5"><span style={{ textDecorationLine: 'line-through', textDecorationStyle: 'solid' }}>$25.00</span> | $19.00</Typography>
+                                <Typography variant="h5"><span style={{ textDecorationLine: 'line-through', textDecorationStyle: 'solid' }}>${p.OldPrice}</span> | ${p.NewPrice}</Typography>
                             </Grid>
                         </Grid>
+                       
                     </Grid>
+                     )}
                 </Paper>
             </div>
 

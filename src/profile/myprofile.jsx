@@ -42,7 +42,7 @@ class MyProfile extends Component {
                                            <h1>My profuile</h1>
                                         </Tab.Pane>
                                         <Tab.Pane eventKey="myads">
-                                            <ComplexGrid/>
+                                            {/* <ComplexGrid/> */}
                                         </Tab.Pane>
                                         <Tab.Pane eventKey="solditems">
                                         <PasswordReset></PasswordReset>

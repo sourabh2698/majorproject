@@ -53,6 +53,30 @@ class App extends React.Component {
         //   title:"title3",
         //   des:"descrpiton 3",
         // },
+      ],
+      ads:[
+        {
+          ProductName:"Book1",
+          ProductDescription:"Description 1",
+          productcondition:"Good",
+          OldPrice:"200.00",
+          NewPrice:"150.00",
+        },
+        {
+          ProductName:"Book1",
+          ProductDescription:"Description 1",
+          productcondition:"Good",
+          OldPrice:"200.00",
+          NewPrice:"150.00",
+        },
+        {
+          ProductName:"Book1",
+          ProductDescription:"Description 1",
+          productcondition:"Good",
+          OldPrice:"200.00",
+          NewPrice:"150.00",
+        },
+
       ]
     }
 
@@ -94,7 +118,8 @@ class App extends React.Component {
 
           <Route path="/login/" exact component={Login} />
           {/* <Route path="/signup/" component={Test} /> */}
-          <Route path="/allad/" component={AllAds}></Route>
+          {/* <Route path="/allad/" component={AllAds}></Route> */}
+          <Route path="/allad/" render={() => <AllAds db={this.props.db} />}></Route>
           <Route path="/postad/" component={PostAd}></Route>
           <Route path="/contactus/" component={ContactUs} />
           <Footer />
