@@ -6,7 +6,7 @@ export default class HomePage extends React.Component {
         return (
             <div>
                 
-                <Paper style={{ marginBottom: "2%" }}> <img src=".././assets/use.jpg" style={{ marginLeft: "10%" }}></img></Paper>
+                <Paper style={{ marginBottom: "2%" }}> <img src=".././assets/use.jpg"></img></Paper>
 
             </div>
         )

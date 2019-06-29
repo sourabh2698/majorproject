@@ -90,7 +90,7 @@ class NavBar2 extends Component {
                         </Form>
                         <Nav className="mr-50" style={{ marginRight: 50 }}>
                             <Nav.Link href="/" style={{ color: "#fff", fontWeight: 400, fontSize: 20 }}>Home</Nav.Link>
-                            {/* <Nav.Link href="/myprofile" style={{ color: "#fff", fontWeight: 400, fontSize: 20 }}>my profile</Nav.Link> */}
+                            <Nav.Link href="/userlogin" style={{ color: "#fff", fontWeight: 400, fontSize: 20 }}>Test</Nav.Link>
 
 
 

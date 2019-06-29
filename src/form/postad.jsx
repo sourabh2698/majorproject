@@ -1,8 +1,11 @@
 import React from 'react'
-import { Form, Button, Col } from 'react-bootstrap'
+import { Form, Button, Col, Row } from 'react-bootstrap'
 import { Paper } from '@material-ui/core';
 import axios from 'axios'
 import { Redirect } from 'react-router-dom';
+import * as firebase from 'firebase/app';
+import "firebase/storage";
+
 
 
 class PostAd extends React.Component {
@@ -13,7 +16,7 @@ class PostAd extends React.Component {
             validated: false,
             title: "",
             description: "",
-            category: "",
+            // category: "",
             oldprice: "",
             newprice: ""
         };
@@ -22,6 +25,7 @@ class PostAd extends React.Component {
         this.state.category = ''
         this.state.oldprice = ''
         this.state.newprice = ''
+        this.state.image=' ';
     }
 
     getTitleChange = (e) => {
@@ -46,29 +50,30 @@ class PostAd extends React.Component {
         this.setState({ newprice: e.target.value })
     }
     setValue = () => {
-        if (this.state.title.trim(), this.state.description.trim()) {
-            let title = this.state.title
-            let description = this.state.description
-            let category = this.state.category
-            let oldprice = this.state.oldprice
-            let newprice = this.state.newprice
-            console.log(title);
-            console.log(description);
+        if(this.state.title.trim(),
+        this.state.description.trim(),
+        this.state.newprice.trim(),
+        this.state.oldprice.trim()){
             let obj = {
                 title: this.state.title,
                 description: this.state.description,
                 category: this.state.category,
                 oldprice: this.state.oldprice,
-                newprice: this.state.newprice
+                newprice: this.state.newprice,
+                image:this.state.image
             }
 
             axios.post("http://localhost:8080/postad", obj)
                 .then((res) => {
+                    
                     console.log(res.data);
+                    this.props.history.push("/")
+                    console.log('redirect to homepage')
                     //   this.getData();
                 })
-        }
-    }
+        
+    }}
+    
 
 
     handleSubmit(event) {
@@ -83,12 +88,44 @@ class PostAd extends React.Component {
 
     }
 
+    //Firebase file upload
+    //----------------------//-------------------------------//
+    fileUpload(e){
+        console.log(e.target.files[0])
+       let fd = new FormData()
+       fd.append("file",e.target.files[0])
+     
+        axios.post("http://localhost:8080/adimages",fd,{headers:{
+         'Content-Type': "multipart/form-data"
+    }}).then((res)=>{
+        console.log(res.data);
+             this.setState({
+                 image:res.data
+             })
+         })
+       
+        
+       }
+     
+       fileUploadFirebase(e){
+         console.log(e.target.files[0])
+         var storageRef = firebase.storage().ref();
+         
+         // Create a reference to 'images/mountains.jpg'
+        var mountainImagesRef = storageRef.child('images/mountain.jpg');
+         
+      
+         mountainImagesRef.put(e.target.files[0]).then(function(snapshot) {
+           console.log('Uploaded a blob or file!');
+         });
+        }
+
+        //********************************************//************************//
+
 
     render() {
         const { validated } = this.state;
-        // if (validated = true) {
-        //     return <Redirect to='/' />;
-        // }
+       
 
         return (
             <Paper md={12} style={{ marginLeft: "auto", marginRight: "auto", width: '50%', padding: 20 }}>
@@ -121,17 +158,17 @@ class PostAd extends React.Component {
                         <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                     </Form.Group>
 
-                    <Form.Group md="4" controlId="validationCustom01">
+                    {/* <Form.Group md="4" controlId="validationCustom01">
                         <Form.Label>Category</Form.Label>
                         <Form.Control
                             required
                             type="text"
                             placeholder="enter title"
-                            onChange={this.getCategoryChange}
-                            value={this.state.category}
+                            onChange={this.getCategoryChanges}
+                            value={this.state.categorys}
                         />
                         <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-                    </Form.Group>
+                    </Form.Group> */}
 
                     <Form.Row>
                         <Form.Group as={Col} controlId="formGridnewprice">
@@ -155,6 +192,37 @@ class PostAd extends React.Component {
                                 value={this.state.newprice} />
                         </Form.Group>
                     </Form.Row>
+                    <Form.Group as={Row}>
+                        <Form.Label as="legend" column sm={2}>
+                            Category
+                        </Form.Label>
+                        <Col sm={10}>
+                            <Form.Check
+                                type="radio"
+                                label="Like New"
+                                name="radio"
+                                id="radio1"
+                                onChange={this.getCategoryChange}
+                                value="Like New"
+                            />
+                            <Form.Check
+                                type="radio"
+                                label="Good"
+                                name="radio"
+                                id="radio2"
+                                onChange={this.getCategoryChange}
+                                value="Good"
+                            />
+                            <Form.Check
+                                type="radio"
+                                label="Poor"
+                                name="radio"
+                                id="radio3"
+                                onChange={this.getCategoryChange}
+                                value="Poor"
+                            />
+                        </Col>
+                    </Form.Group>
 
 
                     <Form.Group>
@@ -164,9 +232,16 @@ class PostAd extends React.Component {
                             feedback="You must agree before submitting."
                         />
                     </Form.Group>
+                    <div>
+                        <input type="file" onChange={(e) => { this.fileUpload(e) }}></input>
+                    </div>
 
 
-                    <Button type="submit" onClick={this.setValue}>Submit form</Button>
+                    <Button type="submit" onClick={this.setValue}>
+                     {/* <a> */}
+                            Submit Ad
+                            {/* </a>   */}
+                            </Button>
                 </Form>
             </Paper>
         );

@@ -2,6 +2,13 @@ import React from 'react';
 import { Form, Button, Row, Col, Modal } from 'react-bootstrap';
 import { Container } from '@material-ui/core';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+// import PasswordStr from '../login/PasswordStr';
+// import SignUpForm from "../login/SignUpForm";
+// import SignUpContainer from '../login/SignUpContainer'
+// const axios = require("axios");
+// const FormValidators = require("./validate");
+// const validateSignUpForm = FormValidators.validateSignUpForm;
+// const zxcvbn = require("zxcvbn");
 
 
 
@@ -31,8 +38,9 @@ class SignUp extends React.Component {
               </Form.Group>
 
               <Form.Group controlId="formBasicPassword">
-                <Form.Label>Password</Form.Label>
+                <Form.Label>Password</Form.Label> 
                 <Form.Control type="password" placeholder="Password" />
+                {/* <PasswordStr score={score} /> */}
               </Form.Group>
               
               <Form.Group controlId="formBasicEmail">

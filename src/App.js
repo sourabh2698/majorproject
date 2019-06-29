@@ -1,13 +1,12 @@
 import React from 'react';
 import './App.css';
-import SearchAppBar from './Navbar/Navigation.js'
+// import SearchAppBar from './Navbar/Navigation.js'
 import Login from './form/login.jsx'
 import { BrowserRouter as Router, Route, Link,withRouter } from "react-router-dom";
+
 import Footer from './footer/footer'
 import HomePage from './mainpage/use'
-import Test from './form/tab';
 import NavBar2 from './Navbar/navbar2'
-import AllAds from './Ads/allads'
 import MyProfile from './profile/myprofile'
 import AdCard from './mainpage/partTwo';
 import PostAd from './form/postad';
@@ -17,6 +16,8 @@ import "firebase/auth";
 import ContactUs from './footer/contactus';
 import PartOne from './mainpage/part1';
 import ComplexGrid from './Ads/ads';
+import Tests from './login/test'
+import Product from './Ads/product';
 
 
 var firebaseConfig = {
@@ -24,12 +25,13 @@ var firebaseConfig = {
   authDomain: "collegeadda-62216.firebaseapp.com",
   databaseURL: "https://collegeadda-62216.firebaseio.com",
   projectId: "collegeadda-62216",
-  storageBucket: "",
+  storageBucket: "collegeadda-62216.appspot.com",
   messagingSenderId: "778633185229",
   appId: "1:778633185229:web:b725a241cd3650fa"
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
+
 
 
 class App extends React.Component {
@@ -38,68 +40,71 @@ class App extends React.Component {
     super(props);
 
     this.state = {};
-    // this.loginCheck()
-
     this.state.db = {
-      ad: [
-        //   {
-        //   title: "title1",
-        //   descrpiton: "descrpiton 1",
-        // },
-        // {
-        //   title:"title2",
-        //   des:"descrpiton 2",
-        // },
-        // {
-        //   title:"title3",
-        //   des:"descrpiton 3",
-        // },
-      ],
-      ads:[
-        // {
-        //   title:"Book1",
-        //   description:"Description 1",
-        //   category:"Books",
-        //   oldprice:"200.00",
-        //   newprice:"150.00",
-        // },
-        // {
-        //   title:"Book2",
-        //   description:"Description 2",
-        //   category:"electronics",
-        //   oldprice:"150.00",
-        //   newprice:"100.00",
-        // },
-        // {
-        //   title:"Book 3",
-        //   description:"Description 1",
-        //   category:"stationary",
-        //   oldprice:"200.00",
-        //   newprice:"150.00",
-        // },
-
-      ]
+      ad: [],
+      buy:[]
+      
     }
 
   }
 
-  // componentDidMount = () => {
-  //   axios.get('http://localhost:8080/postads')
-  //     .then((res) => {
-  //       console.log(res)
+  //----------------//-------------------//
+    //For user profile picuture firebase auth
+    googleLogin=()=>{
+      var provider = new firebase.auth.GoogleAuthProvider();
+  
+  
+      firebase.auth().signInWithPopup(provider).then((result) =>{
+        // This gives you a Google Access Token. You can use it to access the Google API.
+        var token = result.credential.accessToken;
+        // The signed-in user info.
+        var user = result.user;
+        this.setState(
+          {user:user}
+        )
+         console.log(user.displayName,user.email);
+        // ...
+      }).catch(function(error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        // The email of the user's account used.
+        var email = error.email;
+        // The firebase.auth.AuthCredential type that was used.
+        var credential = error.credential;
+        // ...
+      });
+    }
 
-  //       let db = this.state.db;
-  //       db.ad = res.data;
-  //       console.log(res.data)
-  //       this.setState({
-  //         db: db
+  checkLogin=()=>{
+    firebase.auth().onAuthStateChanged((user) => {
+   if (user) {
+    this.setState(
+      {user:user}
+    )
+    
 
-  //       })
-  //     })
-  // }
+   } else {
+     // No user is signed in.
+   }
+ });
+ }
+
+ logout=()=>{
+  firebase.auth().signOut().then(()=> {
+    this.setState(
+      {user:null}
+    )
+    this.props.history.push("/")
+  }).catch(function(error) {
+  // An error happened.
+  });
+}
+  //----------//----------------------------//
   
   componentDidMount() {
-    this.getData()
+    this.getData();
+    this.checkLogin();
   }
   getData() {
     axios.get('http://localhost:8080/postads')
@@ -115,6 +120,14 @@ class App extends React.Component {
       })
   }
 
+  addProduct(item){
+    let db=this.state.db;
+    db.buy.pop(item);
+    db.buy.push(item)
+    this.setState({
+      db:db
+    })
+  }
 
 
 
@@ -124,12 +137,12 @@ class App extends React.Component {
     return (<div>
 
 
-      <Router>
+      
         <div className="background">
           {/* <SearchAppBar /><br /> */}
           <NavBar2/><br/>
           <Route path="/" exact component={PartOne} />
-          <Route path="/" exact render={() => <AdCard db={this.state.db} />} />
+          <Route path="/" exact render={() => <AdCard db={this.state.db} addProduct={this.addProduct.bind(this)} />} />
           <Route path="/" exact component={HomePage} />
           <Route path="/myprofile/" component={MyProfile} />
 
@@ -138,12 +151,14 @@ class App extends React.Component {
           {/* <Route path="/allad/" component={AllAds}></Route> */}
           {/* <Route path="/allad/" render={() => <AllAds db={this.state.db} />}></Route> */}
           <Route path="/allad/" render={() => <ComplexGrid db={this.state.db} />}></Route>
+          <Route path="/product/:id" render={(props) => <Product {...this.props} db={this.state.db}/>} ></Route>
           <Route path="/postad/" component={PostAd}></Route>
           <Route path="/contactus/" component={ContactUs} />
+          <Route path='/userlogin/' component={Tests}/>
           <Footer />
 
         </div>
-      </Router>
+      
     </div>
     )
   }

@@ -2,6 +2,10 @@ import React, { Component } from 'react'
 import { Nav, Col, Tab, Row, Container } from 'react-bootstrap'
 import PasswordReset from '../profile/password'
 import ComplexGrid from '../Ads/ads'
+import Profile from './profile';
+
+
+
 
 class MyProfile extends Component {
     render() {
@@ -39,13 +43,13 @@ class MyProfile extends Component {
                                 <Col sm={9}>
                                     <Tab.Content>
                                         <Tab.Pane eventKey="profile">
-                                           <h1>My profuile</h1>
+                                           <Profile/>
                                         </Tab.Pane>
                                         <Tab.Pane eventKey="myads">
-                                            {/* <ComplexGrid/> */}
+                                            
                                         </Tab.Pane>
                                         <Tab.Pane eventKey="solditems">
-                                        <PasswordReset></PasswordReset>
+                                        <h1>sold items</h1>
                                         </Tab.Pane>
                                         <Tab.Pane eventKey="wishlist">
                                             <h1>wishlst</h1>
@@ -58,7 +62,7 @@ class MyProfile extends Component {
                             </Row>
                         </Tab.Container>
                     </Col>
-                    <Col sm={2} style={{ backgroundColor: "#00FFFF" }}>part 2</Col>
+                    
                 </Row>
 
             </div>

@@ -44,13 +44,13 @@ export class Footer extends Component {
                                         alignItems="center"
                                         justify="center">
 
-                                        <Grid item style={{ marginLeft: 5, marginRight: 5 }}><Avatar alt="Remy Sharp" src="https://facebookbrand.com/wp-content/uploads/2019/04/f_logo_RGB-Hex-Blue_512.png" />
+                                        <Grid item style={{ marginLeft: 5, marginRight: 5 }}><Avatar alt="Remy Sharp" src=".././assets/fb.png" />
                                             facebook  </Grid>
                                         <Grid item style={{ marginLeft: 5, marginRight: 5 }}>
-                                            <Avatar alt="Remy Sharp" src="http://pngimg.com/uploads/twitter/twitter_PNG19.png" />
+                                            <Avatar alt="Remy Sharp" src=".././assets/twitter.png" />
                                             twitter</Grid>
                                         <Grid item style={{ marginLeft: 5, marginRight: 5 }}>
-                                            <Avatar alt="Remy Sharp" src="https://perabellfoodbar.com/wp-content/uploads/2018/05/instagram-new-2016-logo-D9D42A0AD4-seeklogo.com_.png" />
+                                            <Avatar alt="Remy Sharp" src=".././assets/insta.png" />
                                             instagram</Grid>
 
                                     </Grid> </div><br />
