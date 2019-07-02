@@ -27,6 +27,7 @@ class AdCard extends React.Component {
 
                             {this.props.db.ad.map(p =>
                                 <span style={{ marginInlineStart: 50, }}>
+                                    <Link to={`/product/${p._id}`}  >
                                     <Card style={{ width: 300, marginTop: 20, marginLeft: 20, marginBottom: 20, height: "auto" }}>
 
                                         <CardActionArea>
@@ -57,7 +58,7 @@ class AdCard extends React.Component {
                                             </Button>
                                         </CardActions>
 
-                                    </Card>
+                                    </Card></Link>
                                 </span>
                             )}
                         </Grid>

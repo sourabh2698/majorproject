@@ -169,38 +169,3 @@ function AllAds(props) {
 }
 
 export default AllAds;
-
-
-// paper: {
-//     padding: theme.spacing(2),
-//     textAlign: 'center',
-//     color: theme.palette.text.secondary,
-//   },
-//   div:{
-//     display: 'flex',
-//     flexDirection: 'row wrap',
-//     padding: 20,
-//     width: '100%'
-//   },
-//   paperLeft:{
-//     flex: 1,
-//     height: '100%',
-//     margin: 10,
-//     textAlign: 'center',
-//     padding: 10
-//   },
-//   paperRight:{
-//     height: '100%',
-//     flex: 4,
-//     margin: 10,
-//     textAlign: 'center',
-//     padding: 10
-//   }
-
-// <div style={classes.div}>
-//             <Paper zDepth={3} style={classes.paperLeft}>
-//               <h4>First Vertical component</h4>
-//             </Paper>
-//             <Paper zDepth={3} style={classes.paperRight}>
-//                 <h4>Second Vertical component</h4>
-//             </Paper>

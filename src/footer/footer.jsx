@@ -45,7 +45,7 @@ export class Footer extends Component {
                                         justify="center">
 
                                         <Grid item style={{ marginLeft: 5, marginRight: 5 }}><Avatar alt="Remy Sharp" src=".././assets/fb.png" />
-                                            facebook  </Grid>
+                                          <Link exact to="www.fb.com">  facebook </Link> </Grid>
                                         <Grid item style={{ marginLeft: 5, marginRight: 5 }}>
                                             <Avatar alt="Remy Sharp" src=".././assets/twitter.png" />
                                             twitter</Grid>

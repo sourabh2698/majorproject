@@ -1,10 +1,6 @@
 import React, { Component } from 'react'
 import { Navbar, Form, FormControl, Button, NavDropdown, Nav } from 'react-bootstrap'
-import Test from '../form/tab'
-// import ControlledTabs from '../form/formtab'
-import LoginModal from '../form/formtab';
-import LoginDialog from '../form/logintab';
-import GoogleLogin from './firebaselogin'
+import LoginDialog from '../form/loginbutton';
 import * as firebase from 'firebase/app'
 import "firebase/auth";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
@@ -18,9 +14,18 @@ class NavBar2 extends Component {
         this.loginCheck();
         this.state = {
             show: false,
+            search: ''
         };
 
     }
+    //search bar functionaltiy
+    updateSearch(e) {
+        this.setState({ search: e.target.value.substr(0, 20) });
+    }
+
+    //search ba ends
+
+
     //----------------//-------------------//
     //For user profile picuture firebase auth
     googleLogin = () => {
@@ -54,6 +59,8 @@ class NavBar2 extends Component {
             if (user) {
                 this.setState({
                     user: user
+
+
                 })
                 console.log("logged in", user)
             } else {
@@ -85,12 +92,15 @@ class NavBar2 extends Component {
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Form inline className="mr-auto">
-                            <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-                            <Button variant="outline-light">Search</Button>
+                            <FormControl type="text" placeholder="Search" className="mr-sm-2"
+                                value={this.state.search}
+                                onChange={this.updateSearch.bind(this)}
+                            />
+                            <Button variant="outline-light" >Search</Button>
                         </Form>
                         <Nav className="mr-50" style={{ marginRight: 50 }}>
                             <Nav.Link href="/" style={{ color: "#fff", fontWeight: 400, fontSize: 20 }}>Home</Nav.Link>
-                            <Nav.Link href="/userlogin" style={{ color: "#fff", fontWeight: 400, fontSize: 20 }}>Test</Nav.Link>
+                            <Nav.Link href="/" style={{ color: "#fff", fontWeight: 400, fontSize: 20 }}>Test</Nav.Link>
 
 
 
@@ -100,13 +110,13 @@ class NavBar2 extends Component {
 
                                     <NavDropdown.Item >
                                         <span>
-                                            {this.state.user ? <Link to="myprofile" style={{ textDecoration: 'none', color: "#000" }}>My Account</Link> :
+                                            {this.state.user ? <Link to="/myprofile/" style={{ textDecoration: 'none', color: "#000" }}>My Account</Link> :
                                                 <p onClick={() => { alert("please log in to Continue") }}>My Account</p>}
                                         </span></NavDropdown.Item>
 
                                     <NavDropdown.Item /*href="allad"*/>
                                         <span>
-                                            {this.state.user ? <Link to="allad" style={{ textDecoration: 'none', color: "#000" }}>All Ad</Link> :
+                                            {this.state.user ? <Link to="/allad/" style={{ textDecoration: 'none', color: "#000" }}>All Ad</Link> :
                                                 <p onClick={() => { alert("please log in to Continue") }}>All Ad</p>}
                                         </span></NavDropdown.Item>
                                     <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
@@ -114,7 +124,7 @@ class NavBar2 extends Component {
                                     <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
                                 </NavDropdown>
                             </div>
-                            <Nav.Link href="#link" style={{ color: "#fff", fontWeight: 400, fontSize: 20, }}>
+                            <Nav.Link href="javascript:;" style={{ color: "#fff", fontWeight: 400, fontSize: 20, }}>
                                 <span>
                                     {this.state.user ? <Button variant="light" size="md" onClick={() => { this.logOut() }}>Logout</Button> : <LoginDialog />}
                                 </span>

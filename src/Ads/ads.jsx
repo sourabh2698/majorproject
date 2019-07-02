@@ -7,6 +7,7 @@ import ButtonBase from '@material-ui/core/ButtonBase';
 import Divider from '@material-ui/core/Divider';
 import { Button } from 'react-bootstrap';
 import AllAds from './allads';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -38,6 +39,7 @@ const useStyles = makeStyles(theme => ({
 
 function ComplexGrid(props) {
     const classes = useStyles();
+    let filterList= props.db.ad;
 
     return (
         <div className={classes.root}>
@@ -49,7 +51,7 @@ function ComplexGrid(props) {
 
                     <Grid item xs={12} sm={10} >
                         <Paper className={classes.paper} style={{ padding: 30, }}>
-                            {props.db.ad.map(p =>
+                            {filterList.map(p =>
                                 <Grid container spacing={2} style={{ marginBottom: 20 }}>
                                     <Grid item>
                                         <ButtonBase className={classes.image}>
@@ -74,7 +76,7 @@ function ComplexGrid(props) {
                                             </Grid>
                                             <Grid item>
                                                 <Typography variant="body2" style={{ cursor: 'pointer' }} >
-                                                    <Button>Buy Now</Button>
+                                                <Link to={`/product/${p._id}`}  ><Button>Buy Now</Button></Link>
                                                 </Typography>
                                             </Grid>
                                         </Grid>

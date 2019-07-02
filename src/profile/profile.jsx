@@ -48,7 +48,7 @@ export class Profile extends Component {
                 this.setState(
                     { user: user }
                 )
-                this.getBlogs();
+              
 
             } else {
                 // No user is signed in.
