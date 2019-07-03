@@ -1,13 +1,16 @@
 import React, { Component } from 'react'
 import { Nav, Col, Tab, Row, Container } from 'react-bootstrap'
 import PasswordReset from '../profile/password'
-import ComplexGrid from '../Ads/ads'
 import Profile from './profile';
+import MyAds from './myads';
 
 
 
 
 class MyProfile extends Component {
+    constructor(props){
+        super(props)
+    }
     render() {
         return (
             <div>
@@ -22,15 +25,15 @@ class MyProfile extends Component {
                                             <Nav.Link eventKey="profile"> MyProfile</Nav.Link>
                                         </Nav.Item>
                                         <Nav.Item>
-                                            <Nav.Link eventKey="myads">my ads</Nav.Link>
+                                            <Nav.Link eventKey="myads">My Ads</Nav.Link>
                                         </Nav.Item>
-                                        <Nav.Item>
+                                        {/* <Nav.Item>
                                             <Nav.Link eventKey="solditems">sold item</Nav.Link>
                                         </Nav.Item>
 
                                         <Nav.Item>
                                             <Nav.Link eventKey="wishlist">wish list</Nav.Link>
-                                        </Nav.Item>
+                                        </Nav.Item> */}
 
                                         <Nav.Item>
                                             <Nav.Link eventKey="changepassword">change password</Nav.Link>
@@ -46,7 +49,7 @@ class MyProfile extends Component {
                                            <Profile/>
                                         </Tab.Pane>
                                         <Tab.Pane eventKey="myads">
-                                            
+                                            <MyAds db={this.props.db}/>
                                         </Tab.Pane>
                                         <Tab.Pane eventKey="solditems">
                                         <h1>sold items</h1>

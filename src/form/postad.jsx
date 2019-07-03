@@ -1,5 +1,5 @@
 import React from 'react'
-import { Form, Button, Col, Row } from 'react-bootstrap'
+import { Form, Button, Col, Row, FormGroup, FormCheck } from 'react-bootstrap'
 import { Paper } from '@material-ui/core';
 import axios from 'axios'
 import * as firebase from 'firebase/app';
@@ -310,9 +310,12 @@ class PostAd extends React.Component {
                                 feedback="You must agree before submitting."
                             />
                         </Form.Group>
-                        <div>
+                        <FormGroup>
+                            <FormCheck required  feedback="You must agree before submitting.">
+                            <p>Select Product image</p>    
                             <input type="file" onChange={(e) => { this.fileUpload(e) }}></input>
-                        </div><br />
+                            </FormCheck>
+                        </FormGroup><br />
                         <span style={{ display: "flex" }}><hr style={{ height: 5, width: '50%' }} />
                             <p style={{ width: "20%" }}>personal Details</p><hr style={{ height: 5, width: '50%' }} /></span><br />
 

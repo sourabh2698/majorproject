@@ -23,7 +23,7 @@ export class Footer extends Component {
                         <Grid item sm>
                             <Paper style={{ padding: 30, marginLeft: 2, marginRight: 2, backgroundColor: '#b8b8b8' }}>
                                 <Typography variant="body 2" component="h3" align="center" >
-                                    About us  |<Link to="/contactus/" > Contact us </Link> |   Home
+                                    <Link to="/contactus/" > Contact us </Link> |  <Link to="/"> Home </Link>
                                         <hr
                                         style={{
                                             color: '#000000',
@@ -45,13 +45,13 @@ export class Footer extends Component {
                                         justify="center">
 
                                         <Grid item style={{ marginLeft: 5, marginRight: 5 }}><Avatar alt="Remy Sharp" src=".././assets/fb.png" />
-                                          <Link exact to="www.fb.com">  facebook </Link> </Grid>
+                                          <Link to="//www.fb.com" target="_blank">  facebook </Link> </Grid>
                                         <Grid item style={{ marginLeft: 5, marginRight: 5 }}>
                                             <Avatar alt="Remy Sharp" src=".././assets/twitter.png" />
-                                            twitter</Grid>
+                                            <Link to="//www.twitter.com" target="_blank">   twitter</Link></Grid>
                                         <Grid item style={{ marginLeft: 5, marginRight: 5 }}>
                                             <Avatar alt="Remy Sharp" src=".././assets/insta.png" />
-                                            instagram</Grid>
+                                            <Link to="//www.instagram.com" target="_blank"> instagram</Link></Grid>
 
                                     </Grid> </div><br />
 

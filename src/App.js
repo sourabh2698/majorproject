@@ -18,6 +18,7 @@ import PartOne from './mainpage/part1';
 import ComplexGrid from './Ads/ads';
 import Product from './Ads/product';
 import FullWidthTabs from './form/signuptab';
+import MyAds from './profile/myads';
 
 
 var firebaseConfig = {
@@ -42,8 +43,7 @@ class App extends React.Component {
     this.state = {};
     this.state.db = {
       ad: [],
-      buy: [],
-      users: []
+      users: [],
 
     }
 
@@ -83,7 +83,7 @@ class App extends React.Component {
         this.setState(
           { user: user }
         )
-        this.getBlogs();
+      
 
       } else {
         // No user is signed in.
@@ -113,11 +113,11 @@ class App extends React.Component {
   getData() {
     axios.get('http://localhost:8080/postads')
       .then((res) => {
-        console.log(res)
+        // console.log(res)
 
         let db = this.state.db;
         db.ad = res.data;
-        console.log(res.data)
+        // console.log(res.data)
         this.setState({
           db: db
         })
@@ -148,15 +148,18 @@ class App extends React.Component {
         <Route path="/" exact component={PartOne} />
         <Route path="/" exact render={() => <AdCard db={this.state.db} addProduct={this.addProduct.bind(this)} />} />
         <Route path="/" exact component={HomePage} />
-        <Route path="/myprofile/" component={MyProfile} />
-
+        {/* <Route path="/myprofile/" component={MyProfile} /> */}
+        <Route path="/myprofile/" render={(props) => <MyProfile {...props} db={this.state.db} />}></Route>
+        
         {/* <Route path="/login/" exact component={FullWidthTabs} /> */}
         {/* <Route path="/signup/" component={Test} /> */}
         {/* <Route path="/allad/" component={AllAds}></Route> */}
         {/* <Route path="/allad/" render={() => <AllAds db={this.state.db} />}></Route> */}
-        <Route path="/allad/" render={() => <ComplexGrid db={this.state.db} />}></Route>
-      {this.state.db.ad.length ?<Route path="/product/:id" render={(props) => <Product {...props} db={this.state.db} />}></Route>
-:null}   
+        <Route path="/allad/" render={(props) => <ComplexGrid {...props} db={this.state.db} />}></Route>
+      {this.state.db.ad.length ?<Route path="/product/:id" render={(props) => 
+      <Product {...props} db={this.state.db} />}></Route>:null}   
+      
+      <Route path="/myads/" render={(props) => <MyAds {...props} db={this.state.db} />}></Route>
         <Route path="/postad/" component={PostAd}></Route>
         <Route path="/contactus/" component={ContactUs} />
 

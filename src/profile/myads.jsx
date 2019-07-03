@@ -6,7 +6,6 @@ import Typography from '@material-ui/core/Typography';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import Divider from '@material-ui/core/Divider';
 import { Button } from 'react-bootstrap';
-import AllAds from './allads';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 const useStyles = makeStyles(theme => ({
@@ -37,7 +36,7 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-function ComplexGrid(props) {
+function MyAds(props) {
     const classes = useStyles();
     // let filterList= props.db.ad;
 
@@ -45,9 +44,6 @@ function ComplexGrid(props) {
         <div className={classes.root}>
             <div>
                 <Grid container spacing={3}>
-                    <Grid item xs={12} sm={2}>
-                        <AllAds />
-                    </Grid>
 
                     <Grid item xs={12} sm={10} >
                         <Paper className={classes.paper} style={{ padding: 30, }}>
@@ -101,4 +97,4 @@ function ComplexGrid(props) {
     );
 }
 
-export default ComplexGrid;
+export default MyAds;

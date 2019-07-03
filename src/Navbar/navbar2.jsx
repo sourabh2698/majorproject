@@ -100,7 +100,7 @@ class NavBar2 extends Component {
                         </Form>
                         <Nav className="mr-50" style={{ marginRight: 50 }}>
                             <Nav.Link href="/" style={{ color: "#fff", fontWeight: 400, fontSize: 20 }}>Home</Nav.Link>
-                            <Nav.Link href="/" style={{ color: "#fff", fontWeight: 400, fontSize: 20 }}>Test</Nav.Link>
+                            {/* <Nav.Link href="/" style={{ colyor: "#fff", fontWeight: 400, fontSize: 20 }}>Test</Nav.Link> */}
 
 
 
@@ -119,9 +119,9 @@ class NavBar2 extends Component {
                                             {this.state.user ? <Link to="/allad/" style={{ textDecoration: 'none', color: "#000" }}>All Ad</Link> :
                                                 <p onClick={() => { alert("please log in to Continue") }}>All Ad</p>}
                                         </span></NavDropdown.Item>
-                                    <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+                                    {/* <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item> */}
                                     <NavDropdown.Divider />
-                                    <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
+                                    {/* <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item> */}
                                 </NavDropdown>
                             </div>
                             <Nav.Link href="javascript:;" style={{ color: "#fff", fontWeight: 400, fontSize: 20, }}>

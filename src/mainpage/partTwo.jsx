@@ -34,9 +34,9 @@ class AdCard extends React.Component {
                                             <CardMedia
                                                 component="img"
                                                 alt="Contemplative Reptile"
-                                                height="80%"
-                                                image=".././assets/book.png"
-                                                // image={`/${p.image}`}
+                                                height="300"
+                                                // image={".././assets/book.png"}
+                                                image={`http://localhost:8080/${p.image}`}
                                                 title="Contemplative Reptile"
                                             />
                                             <CardContent>
