@@ -22,7 +22,7 @@
     "react-swipeable-views": "^0.13.3",
     "react-window": "^1.8.2",
     "validate": "^4.5.1",
-    "validator": "^11.0.0",
+    "validator": "^13.7.0",
     "zxcvbn": "^4.4.2"
   },
   "scripts": {
